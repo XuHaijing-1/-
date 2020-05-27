@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+	<head> <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="../js/mui.min.js"></script>
+    <link href="../css/mui.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="../css/icons-extra.css" />
+	<style type="text/css">
+		#enterbtn{
+			position: absolute;
+			bottom: 50px;
+			left: 50%;
+			z-index: 100;
+			width: 100px;
+			margin-left: -50px;
+		}
+		#loopbtn{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 50;
+		}
+	</style>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+		window.localStorage.firstopen="true";
+		function enterapp(){
+			window.location.href="../index.html";
+		}
+	</script>
+	</head>
+	<body>
+		<div class="mui-content">
+			<!-- 商品图片 -->
+			<div id="slider" class="mui-slider" >
+			  <div class="mui-slider-group">
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="../images/1.jpg">
+				  </a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="../images/2.jpg">
+				  </a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+				  <a href="#">
+					<img src="../images/3.jpg">
+				  </a>
+				  <button id="enterbtn" type="button" class="mui-btn mui-btn-green mui-btn-outlined" onclick="enterapp();">进入</button>
+				</div>
+			  </div>
+			  <div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			  </div>
+			</div>
+		  <a id="loopbtn" href="#" onclick="enterapp();">跳过</a>
+		</div>
+	</body>
+</html>

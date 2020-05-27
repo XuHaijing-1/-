@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="css/icons-extra.css" />
+    <script type="text/javascript" charset="utf-8">
+      	mui.init({
+      		subpages:[{
+      		  url:'html/home.html',
+      	      id:'home.html',
+      	      styles:{
+      	        top:'0px',
+				bottom:'52px',
+      	      },
+      	      extras:{}
+      		}],
+			preloadPages:[{
+				url:'html/gwc.html',
+				id:'gwc.html',
+				styles:{
+					top:'0px',
+					bottom:'52px',
+				},
+				extras:{}
+			}]
+      	})
+		mui.plusReady(function(){
+			document.getElementById("home").addEventListener("tap",function(){
+				if(plus.webview.currentWebview==plus.webview.getLaunchWebview()){
+					return;
+				}
+				mui.openWindow({url: 'html/home.html',id:'home.html',styles:{top:'0px',bottom:'52px'},});
+			});
+			document.getElementById("zhangdan").addEventListener("tap",function(){
+				if(plus.webview.currentWebview().id=='zhangdan.html'){
+					return;
+				}
+				mui.openWindow('html/zhangdan.html','zhangdan.html',{styles:{top:'0px',bottom:'52px',},});
+			});
+			document.getElementById("gwc").addEventListener("tap",function(){
+				if(plus.webview.currentWebview().id=='gwc.html'){
+					return;
+				}
+				mui.openWindow('html/gwc.html','gwc.html',{styles:{top:'0px',bottom:'52px',},});
+			});
+			document.getElementById("wddd").addEventListener("tap",function(){
+				if(plus.webview.currentWebview().id=='wddd.html'){
+					return;
+				}
+				mui.openWindow('html/wddd.html','wddd.html',{styles:{top:'0px',bottom:'52px',},});
+			});
+		});
+		
+		function settap(i){
+			mui(".mui-tab-item").each(function(){
+				if(this.id==i){
+					this.classList.add("mui-active");
+				}else{
+					this.classList.remove("mui-active");
+				}
+			})
+		}
+		//读取1本地储存变量firstopen判断是否第一次打开APP，第一次打开启动引导页，否不启动
+		openhellow();
+		function openhellow(){
+			if(!window.localStorage.firstopen){
+				window.location.href="html/hellow.html";
+			}
+		}
+    </script>
+</head>
+<body>
+	<!-- 头部 -->
+	<header class="mui-bar mui-bar-nav">
+		<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" onclick="localStorage.removeItem('firstopen')"></a>
+		<h1 class="mui-title">首页</h1>
+	</header>
+	<!-- 主体 -->
+	<div class="mui-content">
+		<!-- 底部栏 -->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" id="home">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">主页</span>
+			</a>
+			<a class="mui-tab-item" id="zhangdan">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">账单</span>
+			</a>
+			<a class="mui-tab-item" id="gwc">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"></span>
+				<span class="mui-tab-label">注册</span>
+			</a>
+			<a class="mui-tab-item" id="wddd">
+				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+	</div>
+</body>
+</html>
