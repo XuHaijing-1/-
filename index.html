@@ -19,8 +19,8 @@
       	      extras:{}
       		}],
 			preloadPages:[{
-				url:'html/gwc.html',
-				id:'gwc.html',
+				url:'html/zhuce.html',
+				id:'zhuce.html',
 				styles:{
 					top:'0px',
 					bottom:'52px',
@@ -41,17 +41,17 @@
 				}
 				mui.openWindow('html/zhangdan.html','zhangdan.html',{styles:{top:'0px',bottom:'52px',},});
 			});
-			document.getElementById("gwc").addEventListener("tap",function(){
-				if(plus.webview.currentWebview().id=='gwc.html'){
+			document.getElementById("zhuce").addEventListener("tap",function(){
+				if(plus.webview.currentWebview().id=='zhuce.html'){
 					return;
 				}
-				mui.openWindow('html/gwc.html','gwc.html',{styles:{top:'0px',bottom:'52px',},});
+				mui.openWindow('html/zhuce.html','zhuce.html',{styles:{top:'0px',bottom:'52px',},});
 			});
-			document.getElementById("wddd").addEventListener("tap",function(){
-				if(plus.webview.currentWebview().id=='wddd.html'){
+			document.getElementById("wode").addEventListener("tap",function(){
+				if(plus.webview.currentWebview().id=='wode.html'){
 					return;
 				}
-				mui.openWindow('html/wddd.html','wddd.html',{styles:{top:'0px',bottom:'52px',},});
+				mui.openWindow('html/wode.html','wode.html',{styles:{top:'0px',bottom:'52px',},});
 			});
 		});
 		
@@ -91,11 +91,11 @@
 				<span class="mui-icon mui-icon-email"></span>
 				<span class="mui-tab-label">账单</span>
 			</a>
-			<a class="mui-tab-item" id="gwc">
+			<a class="mui-tab-item" id="zhuce">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-cart"></span>
 				<span class="mui-tab-label">注册</span>
 			</a>
-			<a class="mui-tab-item" id="wddd">
+			<a class="mui-tab-item" id="wode">
 				<span class="mui-icon mui-icon-extra mui-icon-extra-topic"></span>
 				<span class="mui-tab-label">我的</span>
 			</a>
