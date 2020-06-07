@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- 制作人：陈娜 -->
+<html>
+	<head>
+		<meta charset="utf-8">`
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<script src="../js/mui.js"></script>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">地址自动获取</h1>
+		</header>
+		<div class="mui-content">
+			<button type="button" class="mui-btn mui-btn-blue" onclick="getgps();">获取位置信息</button>
+			<button type="button" class="mui-btn mui-btn-yellow" onclick="opensysmap();">启用第三方地图</button>
+			<button type="button" class="mui-btn mui-btn-red" onclick="openmap();">打开地图</button>
+			<div id="mymap" style="text-align: center; line-height: 500px; background-color: mistyrose; margin-top: 20px;">
+				正在加载地图。。。
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" charset="utf-8">
+			document.getElementById("mymap").style.height=(screen.availHeight-190)+"px";
+			var lat,long;
+			mui.init()
+			function getgps(){
+				plus.geolocation.getCurrentPosition(function(s){
+					var str="";
+					// str+="地址: "+s.addresses+"\n" ;//获取地址信息
+					// str+="坐标类型: "+s.coordsType+"\n";
+					// var timeflag = s.timestamp;//获取到地理位置信息的时间戳;一个毫秒数;
+					// str+="时间戳: "+timeflag+"\n";
+					// var codns = s.coords ;//获取地理坐标信息;
+					// var lat = codns.latitude;//获取到当前位置的纬度;
+					// str+="纬度: "+lat+"\n";
+					// var longt = codns.longitude;//获取到当前位置的经度
+					// str+="经度: "+longt+"\n";
+					// var alt = codns.altitude;//获取到当前位置的海拔信息;
+					// str+="海拔: "+alt+"\n";
+					// var accu = codns.accuracy;//地理坐标信息精确度信息;
+					// str+="精确度: "+accu+"\n";
+					// var altAcc = codns.altitudeAccuracy;//获取海拔信息的精确度;
+					// str+="海拔精确度: "+altAcc+"\n";
+					// var head = codns.heading;//获取设备的移动方向;
+					// str+="移动方向: "+head+"\n";
+					// var sped = codns.speed;//获取设备的移动速度;
+					// str+="移动速度: "+sped;
+					str+="当前经度："+s.coords.longitude+"\n";
+					str+="当前纬度："+s.coords.latitude+"\n";
+					str+="当前海拔高度："+s.coords.altitude+"\n";
+					str+="位置精度："+s.coords.accuracy+"\n";
+					str+="详细地址信息："+s.addresses+"\n";
+					str+="所在省份："+s.address.province;
+					lat=s.coords.latitude;
+					long=s.coords.longitude;
+					mui.alert(str);
+				},function(ev){
+					mui.alert("未成功获取地址信息！"+ev.message);
+				},{geocode:true});
+			}
+			function opensysmap(){
+				var dst = new plus.maps.Point(116.39131928,39.90793074);//天安门
+				var src = new plus.maps.Point(long,lat);
+				plus.maps.openSysMap(dst,"中国北京",src);
+			}
+			function openmap(){
+				var mymap=new plus.maps.Map("mymap");
+				mymap.setCenter(new plus.maps.Point(long,lat));
+				mymap.setZoom(21);
+				mymap.showUserLocation(true);
+				var icon=new plus.maps.Marker(new plus.maps.Point(long+0.000001,lat));
+				icon.setIcon("../images/1.jpg");
+				var bul=new plus.maps.Bubble("憨态可拘");
+				icon.setBubble(bul);
+				mymap.addOverlay(icon);
+			}
+		</script>
+</html>
